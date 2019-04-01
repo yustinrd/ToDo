@@ -1,0 +1,21 @@
+.actions-list__item {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .2em  1em  .2em 1em;
+}
+
+.actions-list__item:hover {
+    background-color: lightgrey;
+}
+
+.actions-list__item:nth-child(n+1) {
+    border-bottom: 1px solid black;
+}
+
+.actions-list__item-name {
+    display: block;
+    flex-grow: 1;
+    padding-left: .5em;
+}

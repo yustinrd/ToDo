@@ -1,0 +1,100 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "name": "react"
+    },
+    {
+      "id": 2,
+      "name": "redux"
+    },
+    {
+      "id": 3,
+      "name": "server",
+      "parentId": 4
+    },
+    {
+      "name": "Подготовка проекта",
+      "id": 4
+    },
+    {
+      "name": "meetings",
+      "parentId": 4,
+      "id": 5
+    }
+  ],
+  "task": [
+    {
+      "id": 1,
+      "text": "Настроить dev окружение",
+      "done": false,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "text": "Добавить layout",
+      "done": false,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "text": "Список категорий",
+      "done": false,
+      "categoryId": 1
+    },
+    {
+      "id": 4,
+      "text": "Список задач",
+      "done": false,
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "text": "Поиск задач",
+      "done": true,
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "text": "Модальное окно",
+      "done": false,
+      "categoryId": 1
+    },
+    {
+      "text": "category",
+      "done": false,
+      "categoryId": 2,
+      "id": 7
+    },
+    {
+      "text": "task",
+      "done": false,
+      "categoryId": 2,
+      "id": 8
+    },
+    {
+      "text": "Подготовить тестовый сервер",
+      "done": true,
+      "categoryId": 3,
+      "id": 9
+    },
+    {
+      "text": "Добавить описание",
+      "done": true,
+      "categoryId": 3,
+      "id": 10
+    },
+    {
+      "text": "Обсуждение задания",
+      "done": true,
+      "categoryId": 5,
+      "id": 11
+    },
+    {
+      "text": "Статус 1",
+      "done": true,
+      "categoryId": 5,
+      "id": 12
+    }
+  ]
+}

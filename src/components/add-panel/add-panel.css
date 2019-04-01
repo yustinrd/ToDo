@@ -1,0 +1,15 @@
+.add-panel {
+    display: flex;
+    margin-bottom: .4em;
+    min-height: 3em;
+}
+
+.add-panel__input {
+    border-radius:  .2em  0 0 .2em;
+}
+
+.add-panel__add-btn {
+    height: 1.6em;
+    border-left: none;
+    border-radius:  0 .2em .2em 0;
+}

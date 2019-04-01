@@ -1,0 +1,14 @@
+.show-done {
+    height: max-content;
+    display: flex;
+    align-items: center;
+    margin-right: 1.2em;
+    font-size: .8em;
+    line-height: 2em;
+}
+
+.show-done .show-done__done-checkbox {
+    margin-right: 1em;
+    height: 21px;
+    width: 15px;
+}

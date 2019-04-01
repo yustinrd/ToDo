@@ -1,0 +1,21 @@
+.category-list__item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: .2em;
+    padding: .2em .2em .2em .6em;
+}
+
+.category-list__item:nth-child(n+2) {
+    /*border-top: none;*/
+}
+
+.category-list__item-name {
+    cursor: pointer;
+}
+
+.inner-list__item {
+    position: relative;
+    width: 200px;
+    align-self: flex-end;
+}
