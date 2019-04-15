@@ -1,3 +1,42 @@
-import CategoryList from './category-list';
+import React from 'react';
 
-export default CategoryList;
+import CategoryListItem from '../category-list-item';
+
+import './category-list.css';
+
+export default function CategoryList (props) {
+
+  const handleShowEditCategoryModal = (categoryId) => {
+    const category = props.categories.find(category => categoryId === category.id);
+    props.showEditCategoryModal(category);
+  };
+
+  const handleShowAddCategoryModal = (categoryId) => {
+    const category = {
+      name: '',
+      parentId: categoryId
+    };
+    props.showAddCategoryModal(category);
+  };
+
+  const CategoryList = props.categories.map((item) => {
+    const isSelected = props.currentCategoryId === item.id;
+    return <CategoryListItem
+      key={item.id}
+      itemId={item.id}
+      name={item.name}
+      isInnerItem={'parentId' in item}
+      isSelected={isSelected}
+      onChangeCategory={props.onChangeCategory}
+      onDeleteCategory={props.onDeleteCategory}
+      showEditCategoryModal={handleShowEditCategoryModal}
+      showAddCategoryModal={handleShowAddCategoryModal}
+    />
+  });
+
+  return (
+    <ul className="category-list">
+      {CategoryList}
+    </ul>
+  );
+}
