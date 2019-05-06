@@ -2,7 +2,7 @@ import React from 'react';
 
 import CategoryListItem from '../category-list-item';
 
-import './category-list.css';
+import styles from './category-list.module.css';
 
 export default function CategoryList (props) {
 
@@ -35,7 +35,7 @@ export default function CategoryList (props) {
   });
 
   return (
-    <ul className="category-list">
+    <ul className={styles.categoryList}>
       {CategoryList}
     </ul>
   );

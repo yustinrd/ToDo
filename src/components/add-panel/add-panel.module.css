@@ -1,19 +1,15 @@
-.search {
+.addPanel {
     display: flex;
     margin-bottom: .4em;
+    min-height: 3em;
 }
 
-.search__input {
+.input {
     border-radius:  .2em  0 0 .2em;
 }
 
-.search__small-btn {
-    width: 21px;
+.addBtn {
+    height: 1.6em;
     border-left: none;
     border-radius:  0 .2em .2em 0;
-    padding: 0;
-}
-
-.search-block {
-    margin-right: 1.2em;
 }

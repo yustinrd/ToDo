@@ -2,7 +2,7 @@ import React from 'react';
 
 import TodoListItem from '../todo-list-item';
 
-import './todo-list.css';
+import styles from './todo-list.module.css';
 
 export default function TodoList(props) {
 
@@ -21,7 +21,7 @@ export default function TodoList(props) {
   );
 
   return (
-    <ul className="todo-list">
+    <ul className={styles.todoList}>
       {TasksList}
     </ul>
   );

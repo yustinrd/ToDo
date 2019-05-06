@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import CategoryList from '../components/category-list';
 import { setCurrentCategoryId, deleteCategory, showEditCategoryModal, showAddCategoryModal } from '../actions';
-import { getSortedCategories } from '../reducers';
+import { getSortedCategories } from '../selectors/categories';
 
 function mapStateToProps(state) {
   return {
@@ -12,12 +13,13 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    onChangeCategory: id => dispatch(setCurrentCategoryId(id)),
-    onDeleteCategory: id => dispatch(deleteCategory(id)),
-    showEditCategoryModal: category => dispatch(showEditCategoryModal(category)),
-    showAddCategoryModal: category => dispatch(showAddCategoryModal(category)),
-  };
+
+  return bindActionCreators({
+    onChangeCategory: setCurrentCategoryId,
+    onDeleteCategory: deleteCategory,
+    showEditCategoryModal: showEditCategoryModal,
+    showAddCategoryModal: showAddCategoryModal,
+  }, dispatch);
 }
 
 const CategoryListContainer = connect(mapStateToProps, mapDispatchToProps)(CategoryList);

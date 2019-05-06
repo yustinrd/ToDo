@@ -1,4 +1,4 @@
-.show-done {
+.showDone {
     height: max-content;
     display: flex;
     align-items: center;
@@ -7,7 +7,7 @@
     line-height: 2em;
 }
 
-.show-done .show-done__done-checkbox {
+.showDone .doneCheckbox {
     margin-right: 1em;
     height: 21px;
     width: 15px;

@@ -1,20 +1,21 @@
 import React from 'react';
 
-import './category-list-item.css';
+import classNames from 'classnames';
+import styles from './category-list-item.module.css';
 
 export default function CategoryListItem (props) {
   return (
-    <li className={`category-list__item ${props.isInnerItem ? 'inner-list__item' : ''}`}>
-      <div className="category-list__left-side">
-        <span className="category-list__item-name" style={props.isSelected ? {fontWeight: 'bold'} : {}} onClick={() => props.onChangeCategory(props.itemId)}>{props.name}</span>
-        <button className="category-list__small-btn small-btn small-btn--edit" onClick={() => props.showEditCategoryModal(props.itemId)}><i className="fas fa-edit"/>
+    <li className={classNames(styles.item, {[styles.innerListItem]: props.isInnerItem})}>
+      <div>
+        <span className={styles.itemName} style={props.isSelected ? {fontWeight: 'bold'} : {}} onClick={() => props.onChangeCategory(props.itemId)}>{props.name}</span>
+        <button className='small-btn' onClick={() => props.showEditCategoryModal(props.itemId)}><i className="fas fa-edit"/>
         </button>
       </div>
-      <div className="category-list__right-side">
-        <button className="category-list__small-btn small-btn small-btn--delete" onClick={() => props.onDeleteCategory(props.itemId)}><i className="fas fa-trash"/>
+      <div>
+        <button className="small-btn" onClick={() => props.onDeleteCategory(props.itemId)}><i className="fas fa-trash"/>
         </button>
         {!props.isInnerItem ?
-          <button className="category-list__small-btn small-btn small-btn--add-inner" onClick={() => props.showAddCategoryModal(props.itemId)}><i className="fas fa-plus"/></button>
+          <button className="small-btn" onClick={() => props.showAddCategoryModal(props.itemId)}><i className="fas fa-plus"/></button>
           :
           null
         }

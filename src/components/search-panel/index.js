@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './search-panel.css';
+import styles from './search-panel.module.css';
 
 export default function SearchPanel(props) {
 
@@ -17,10 +17,10 @@ export default function SearchPanel(props) {
   };
 
   return (
-    <div className="search-block">
-      <div className="search-block__search search">
-        <input className="search__input" type="text" placeholder="Search" onChange={handleChangeSearchFilter} value={searchFilter} />
-        <button className="search__small-btn small-btn--close" onClick={reset}>
+    <div className={styles.searchBlock}>
+      <div className={styles.search}>
+        <input className={styles.input} type="text" placeholder="Search" onChange={handleChangeSearchFilter} value={searchFilter} />
+        <button className={styles.smallBtn} onClick={reset}>
           <i className="fas fa-times" />
         </button>
       </div>

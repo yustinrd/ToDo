@@ -1,39 +1,58 @@
-import { GET_TODOS, ADD_TODO, DELETE_TODO, EDIT_TODO } from '../actions';
+import { SET_TODOS, ADD_TODO, EDIT_TODO } from '../actions';
+import todosSchema from "../schemas/todos";
+import { normalize } from "normalizr";
 
-function todoReducer(state = {}, action) {
+const initialState = {
+  byId: [],
+  allIds: []
+};
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case EDIT_TODO:
-      if (state.id !== action.todo.id) {
-        return state;
-      }
-
-      return action.todo;
-
-    default:
-      return state;
-  }
-}
-
-export default function reducer(state = [], action) {
-  switch (action.type) {
-    case GET_TODOS:
-      return action.todos;
+    case SET_TODOS:
+      const normalizedTodos = normalize(action.todos, todosSchema);
+      return {
+        byId: normalizedTodos.entities.todos,
+        allIds: normalizedTodos.result
+      };
 
     case ADD_TODO:
-      return [...state, action.todo];
-
-    case DELETE_TODO:
-      const index = state.findIndex(todo => todo.id === action.id);
-
-      return [
-        ...state.slice(0, index),
-        ...state.slice(index + 1)
-      ];
+      return applyAddTodo(state, action);
 
     case EDIT_TODO:
-      return state.map(todo => todoReducer(todo, action));
+      return applyEditTodo(state, action);
 
     default:
       return state;
   }
 }
+
+const applyAddTodo = (state, action) => {
+  const todo = {
+    id: action.todo.id,
+    text: action.todo.text,
+    categoryId: action.todo.categoryId,
+    done: action.todo.done
+  };
+  const todos = {
+    ...state.byId,
+    [todo.id]: todo
+  };
+  return {
+    ...state,
+    byId: todos,
+    allIds: [...state.allIds, todo.id]
+  };
+};
+
+const applyEditTodo = (state, action) => {
+  const { id } = action.todo;
+  const todos = {
+    ...state.byId,
+    [id]: action.todo
+  };
+  return {
+    ...state,
+    byId: todos
+  };
+};

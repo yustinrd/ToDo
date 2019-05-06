@@ -1,0 +1,10 @@
+.todoApp {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 5em auto 0;
+    padding: 1em;
+    box-shadow: 2px 2px 5px 3px rgba(32, 32, 32, 0.5);
+    border-radius: .3em;
+}

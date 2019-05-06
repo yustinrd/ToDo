@@ -3,11 +3,11 @@ import React from 'react';
 import CategoriesBlockAddPanelContainer from '../../containers/CategoriesBlockAddPanelContainer';
 import CategoryListContainer from '../../containers/CategoryListContainer';
 
-import './categories-block.css';
+import styles from './categories-block.module.css';
 
 export default function CategoryBlock() {
   return (
-    <div className="category-block">
+    <div className={styles.categoriesBlock}>
       <CategoriesBlockAddPanelContainer />
       <CategoryListContainer />
     </div>

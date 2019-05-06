@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './add-panel.css';
+import styles from './add-panel.module.css';
 
 export default class AddPanel extends Component {
 
@@ -17,10 +17,10 @@ export default class AddPanel extends Component {
 
   render () {
     return (
-      <div className="add-panel">
+      <div className={styles.addPanel}>
         <form onSubmit={this.handleSubmit}>
-          <input className="add-panel__input" type="text" ref="name" />
-          <button className="add-panel__add-btn" type="submit">Add</button>
+          <input className={styles.input} type="text" ref="name" />
+          <button className={styles.addBtn} type="submit">Add</button>
         </form>
       </div>
     );

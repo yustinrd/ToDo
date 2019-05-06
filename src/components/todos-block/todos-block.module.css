@@ -1,12 +1,12 @@
-.todos-block {
+.todosBlock {
     max-width: 35em;
 }
 
-.top-panel {
+.topPanel {
     min-height: 3em;
 }
 
-.top-panel {
+.topPanel {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

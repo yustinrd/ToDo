@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import './modal.css';
+import classNames from 'classnames';
+import styles from './modal.module.css';
 
 export default class Modal extends Component {
 
@@ -34,24 +35,24 @@ export default class Modal extends Component {
 
   render() {
     const categoryOptions = this.props.categories.map(category =>
-      <option key={category.id} className="modal__selection-item" value={category.id}>
+      <option key={category.id} value={category.id}>
         {category.name}
       </option>
     );
 
     return (
-      <div className={`modal ${this.props.modal.actionType === '' ? 'hidden' : ''}`}>
-        <form className="modal__window" onSubmit={this.handleSubmit}>
+      <div className={classNames(styles.modal, {[styles.hidden]: this.props.modal.actionType === ''})}>
+        <form className={styles.window} onSubmit={this.handleSubmit}>
 
-          <button className="modal__small-btn small-btn small-btn--close" type="button" onClick={this.props.hideModal}>
+          <button className={classNames(styles.saveBtn, 'small-btn', 'small-btn--close')} type="button" onClick={this.props.hideModal}>
             <i className="fas fa-times"/>
           </button>
 
-          <input className="modal__name" type="text" ref="name"/>
+          <input className={styles.name} type="text" ref="name"/>
 
           {this.props.modal.isDoneVisible ?
-            <div className="modal__is-done">
-              <input className="modal__done-checkbox" id="isdone-checkbox" type="checkbox" ref="isDone" />
+            <div className={styles.isDone}>
+              <input className={styles.doneCheckbox} id="isdone-checkbox" type="checkbox" ref="isDone" />
               <label htmlFor="isdone-checkbox">Is Done</label>
             </div>
             :
@@ -59,14 +60,14 @@ export default class Modal extends Component {
           }
 
           {this.props.modal.categoriesVisible && this.props.categories.length > 0 ?
-          <select className="modal__selection" ref="category" defaultValue={this.props.currentCategoryId}>
+          <select className={styles.selection} ref="category" defaultValue={this.props.currentCategoryId}>
             {categoryOptions}
           </select>
             :
             null
           }
 
-          <button className="modal__save-btn" type="submit">Save</button>
+          <button className={styles.saveBtn} type="submit">Save</button>
 
         </form>
       </div>

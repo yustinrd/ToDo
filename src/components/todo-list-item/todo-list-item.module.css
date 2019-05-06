@@ -1,4 +1,4 @@
-.todo-list__item {
+.item {
     height: 3em;
     display: flex;
     align-items: center;
@@ -6,15 +6,15 @@
     padding: .2em  1em  .2em 1em;
 }
 
-.todo-list__item:hover {
+.item:hover {
     background-color: lightgrey;
 }
 
-.todo-list__item:nth-child(n+1) {
+.item:nth-child(n+1) {
     border-bottom: 1px solid black;
 }
 
-.todo-list__item-name {
+.itemName {
     display: block;
     flex-grow: 1;
     padding-left: .5em;

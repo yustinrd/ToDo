@@ -14,7 +14,11 @@ function mergeProps(stateProps, dispatchProps) {
   const { dispatch } = dispatchProps;
 
   return {
-    handleSubmit: text => dispatch(addTodo({text, categoryId: currentCategoryId})),
+    handleSubmit: text => dispatch(addTodo({
+      text,
+      done: false,
+      categoryId: currentCategoryId
+    })),
   };
 }
 

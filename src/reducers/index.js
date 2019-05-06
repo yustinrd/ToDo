@@ -15,7 +15,3 @@ const reducer = combineReducers({
 });
 
 export default reducer;
-
-export function getSortedCategories(state) {
-  return fromCategories.getSortedCategories(state.categories);
-}

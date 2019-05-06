@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 
 import TodoList from '../components/todo-list';
 import { editTodo, showEditTodoModal } from '../actions';
-import { getFiltredTodos } from '../selectors';
+import { getFilteredTodos } from '../selectors/todos';
 
 function mapStateToProps(state) {
   return {
-    todos: getFiltredTodos(state),
+    todos: getFilteredTodos(state),
     currentCategoryId: state.currentCategoryId
   };
 }

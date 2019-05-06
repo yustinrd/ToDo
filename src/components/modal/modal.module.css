@@ -7,7 +7,7 @@
     background-color: rgba(32, 32, 32, .5);
 }
 
-.modal__window {
+.window {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -18,30 +18,34 @@
     border-radius: .3em;
 }
 
-.modal__small-btn {
+.smallBtn {
     position: absolute;
     top: 8px;
     right: 8px;
 }
 
-.modal__name,
-.modal__selection {
+.name,
+.selection {
     width: 70%;
     margin-bottom: 1em;
 }
 
-.modal__is-done {
+.isDone {
     display: flex;
     align-items: center;
     margin-bottom: 1em;
 }
 
-.modal__done-checkbox {
+.doneCheckbox {
     margin-right: 1em;
 }
 
-.modal__save-btn {
+.saveBtn {
     width: fit-content;
     height: 1.6em;
     align-self: flex-end;
+}
+
+.hidden {
+    display: none;
 }

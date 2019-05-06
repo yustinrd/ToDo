@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 
 import Modal from '../components/modal';
+import { getSortedCategories } from '../selectors/categories';
 import { hideModal, addCategory, editCategory, editTodo } from '../actions';
 
 function mapStateToProps(state) {
   return {
     modal: state.modal,
-    categories: state.categories,
+    categories: getSortedCategories(state),
     currentCategoryId: state.currentCategoryId
   };
 }
