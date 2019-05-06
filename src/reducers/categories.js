@@ -1,5 +1,5 @@
 import {
-  GET_CATEGORIES,
+  SET_CATEGORIES,
   ADD_CATEGORY,
   DELETE_CATEGORY,
   EDIT_CATEGORY,
@@ -15,7 +15,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case GET_CATEGORIES:
+    case  SET_CATEGORIES:
       const normalizedCategories = normalize(action.categories, categoriesSchema);
       return {
         byId: normalizedCategories.entities.categories,

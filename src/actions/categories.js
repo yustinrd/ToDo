@@ -1,6 +1,6 @@
 import * as categoryApi from '../api/categories';
 
-export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const SET_CATEGORIES = 'SET_CATEGORIES';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const EDIT_CATEGORY = 'EDIT_CATEGORY';
@@ -12,7 +12,7 @@ export function getCategories() {
       .then(response => response.data)
       .then(categories => {
         dispatch({
-          type: GET_CATEGORIES,
+          type: SET_CATEGORIES,
           categories
         });
 
