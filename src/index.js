@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from './store';
 import App from './components/app';
@@ -11,8 +12,12 @@ import './index.css';
 store.dispatch(getCategories());
 store.dispatch(getTodos());
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-document.getElementById('root'));
+const application = (
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+);
+
+ReactDOM.render(application, document.getElementById('root'));

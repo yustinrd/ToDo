@@ -1,4 +1,7 @@
 import * as categoryApi from '../api/categories';
+import { push, createMatchSelector } from 'connected-react-router';
+import { routes } from '../router.js';
+import store from '../store';
 
 export const SET_CATEGORIES = 'SET_CATEGORIES';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
@@ -16,8 +19,15 @@ export function getCategories() {
           categories
         });
 
-        if (categories.length > 0)
-          dispatch(setCurrentCategoryId(categories[0].id));
+        const matchSelector = createMatchSelector(routes.category);
+        const match = matchSelector(store.getState());
+
+        if (match !== null && match.path === routes.category.path) {
+          const id = parseInt(match.params.id);
+          dispatch(setCurrentCategoryId(id));
+        } else {
+          dispatch(setCurrentCategoryId(null));
+        }
       });
   };
 }
@@ -36,10 +46,16 @@ export function addCategory(category) {
 export function deleteCategory(id) {
   return dispatch => {
     return categoryApi.deleteCategory(id)
-      .then(response => dispatch({
-        type: DELETE_CATEGORY,
-        id
-      }));
+      .then(response => {
+        dispatch({
+          type: DELETE_CATEGORY,
+          id
+        });
+
+        const currentCategoryId = store.getState().currentCategoryId;
+        if (id === currentCategoryId)
+          dispatch(setCurrentCategoryId(null));
+      });
   };
 }
 
@@ -55,8 +71,22 @@ export function editCategory(category) {
 }
 
 export function setCurrentCategoryId(id) {
-  return {
-    type: SET_CURRENT_CATEGORY_ID,
-    currentCategoryId: id
+  return dispatch => {
+    let url = '/';
+    const categoryIdList = store.getState().categories.allIds;
+    if (categoryIdList.length > 0) {
+      if (categoryIdList.find(itemId => itemId === id) === undefined) {
+        id = categoryIdList[0];
+      }
+      url = '/category/' + id;
+    } else {
+      id = null;
+    }
+
+    dispatch({
+      type: SET_CURRENT_CATEGORY_ID,
+      currentCategoryId: id,
+    });
+    dispatch(push(url));
   };
 }
