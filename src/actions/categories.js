@@ -87,6 +87,8 @@ export function setCurrentCategoryId(id) {
       type: SET_CURRENT_CATEGORY_ID,
       currentCategoryId: id,
     });
-    dispatch(push(url));
+
+    if (store.getState().router.location.pathname !== url)
+      dispatch(push(url));
   };
 }
