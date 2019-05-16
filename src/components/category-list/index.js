@@ -1,42 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import CategoryListItem from '../category-list-item';
 
 import styles from './category-list.module.css';
 
-export default function CategoryList (props) {
+export default class CategoryList extends Component{
+    constructor(props) {
+        super(props);
+        this.handleShowEditCategoryModal = this.handleShowEditCategoryModal.bind(this);
+        this.handleShowAddCategoryModal= this.handleShowAddCategoryModal.bind(this);
+    }
 
-  const handleShowEditCategoryModal = (categoryId) => {
-    const category = props.categories.find(category => categoryId === category.id);
-    props.showEditCategoryModal(category);
-  };
-
-  const handleShowAddCategoryModal = (categoryId) => {
-    const category = {
-      name: '',
-      parentId: categoryId
+    handleShowEditCategoryModal (categoryId) {
+        const category = this.props.categories.find(category => categoryId === category.id);
+        this.props.showEditCategoryModal(category);
     };
-    props.showAddCategoryModal(category);
-  };
 
-  const CategoryList = props.categories.map((item) => {
-    const isSelected = props.currentCategoryId === item.id;
-    return <CategoryListItem
-      key={item.id}
-      itemId={item.id}
-      name={item.name}
-      isInnerItem={'parentId' in item}
-      isSelected={isSelected}
-      onChangeCategory={props.onChangeCategory}
-      onDeleteCategory={props.onDeleteCategory}
-      showEditCategoryModal={handleShowEditCategoryModal}
-      showAddCategoryModal={handleShowAddCategoryModal}
-    />
-  });
+    handleShowAddCategoryModal (categoryId) {
+        const category = {
+            name: '',
+            parentId: categoryId
+        };
+        this.props.showAddCategoryModal(category);
+    };
 
-  return (
-    <ul className={styles.categoryList}>
-      {CategoryList}
-    </ul>
-  );
+    render () {
+        const CategoryList = this.props.categories.map((item) => {
+            const isSelected = this.props.currentCategoryId === item.id;
+            return <CategoryListItem
+                key={item.id}
+                itemId={item.id}
+                name={item.name}
+                isInnerItem={'parentId' in item}
+                isSelected={isSelected}
+                onChangeCategory={this.props.onChangeCategory}
+                onDeleteCategory={this.props.onDeleteCategory}
+                showEditCategoryModal={this.handleShowEditCategoryModal}
+                showAddCategoryModal={this.handleShowAddCategoryModal}
+            />
+        });
+
+        return (
+            <ul className={styles.categoryList}>
+                {CategoryList}
+            </ul>
+        );
+    }
 }
